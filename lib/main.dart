@@ -1,8 +1,10 @@
+import 'package:aa/constants/app_themes.dart';
 import 'package:aa/localization.dart';
 import 'package:aa/ui/components/components.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'constants/constants.dart';
 import 'controller/controllers.dart';
 
 void main() async {
@@ -22,13 +24,17 @@ class MyApp extends StatelessWidget {
        locale: languageController.getLocale, // <- 현재 언어
        localizationsDelegates: [
           const AppLocalizationsDelegate(), // <- 내 커스텀 delegate
-//          GlobalMaterialLocalizations.delegate,
-          // GlobalWidgetsLocalizations.delegate,
        ],
        supportedLocales: AppLocalizations.languages.keys.toList(),
        // <-- 언어 번역 끝
 
        debugShowCheckedModeBanner: false,
+
+       theme: AppThemes.lightTheme,
+       darkTheme: AppThemes.darkTheme,
+       themeMode: ThemeMode.system,
+       initialRoute: "/",
+       getPages: AppRoutes.routes,
      ),
     ),);
   }
